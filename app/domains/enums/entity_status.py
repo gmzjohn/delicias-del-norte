@@ -1,6 +1,5 @@
 from enum import Enum
 
-class ProductStatus(str, Enum):
+class EntityStatus(str, Enum):
     ACTIVE = "active"
     INACTIVE = "inactive"
-    
