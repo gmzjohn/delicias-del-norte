@@ -1,12 +1,11 @@
 from datetime import datetime
-from decimal import Decimal
 from .base_entity import BaseEntity
 from .enums.entity_status import EntityStatus
-from .product import Product
-from .order import Order
-from .employee import Employee
+from .order_item import OrderItem
+from .client import Client
 
-class OrderItem(BaseEntity):
+
+class Order(BaseEntity):
     def __init__(
         self,
         id: int,
@@ -15,11 +14,8 @@ class OrderItem(BaseEntity):
         updated_by: int,
         created_at: datetime,
         updated_at: datetime,
-        product: Product,
-        quantity: int,
-        price: Decimal,
-        order: Order,
-        assigned_chef: Employee,
+        order_items: list[OrderItem],
+        client: Client,
     ):
         super().__init__(
             id=id,
@@ -29,9 +25,5 @@ class OrderItem(BaseEntity):
             created_at=created_at,
             updated_at=updated_at,
         )
-        
-        self.product = product
-        self.quantity = quantity
-        self.price = price
-        self.order = order
-        self.assigned_chef = assigned_chef
+        self.order_items = order_items
+        self.client = client
