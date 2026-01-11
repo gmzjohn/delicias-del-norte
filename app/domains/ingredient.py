@@ -1,11 +1,10 @@
 from datetime import datetime
-from decimal import Decimal
 
 from enums.entity_status import EntityStatus
 from inventory_item import InventoryItem
 
 
-class Product(InventoryItem):
+class Ingredient(InventoryItem):
     def __init__(
         self,
         id: int,
@@ -15,8 +14,7 @@ class Product(InventoryItem):
         created_at: datetime,
         updated_at: datetime,
         name: str,
-        price: Decimal,
-        description: str | None = None,
+        price: int,
     ):
         super().__init__(
             id=id,
@@ -28,4 +26,3 @@ class Product(InventoryItem):
             updated_at=updated_at,
         )
         self.price = price
-        self.description = description

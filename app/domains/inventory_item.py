@@ -1,8 +1,10 @@
 from datetime import datetime
+
 from base_entity import BaseEntity
 from enums.entity_status import EntityStatus
 
-class Ingredient(BaseEntity):
+
+class InventoryItem(BaseEntity):
     def __init__(
         self,
         id: int,
@@ -14,11 +16,11 @@ class Ingredient(BaseEntity):
         name: str,
     ):
         super().__init__(
-            id = id,
-            status = status,
-            created_by = created_by,
-            updated_by = updated_by,
-            created_at = created_at,
-            updated_at = updated_at
+            id=id,
+            status=status,
+            created_by=created_by,
+            updated_by=updated_by,
+            created_at=created_at,
+            updated_at=updated_at,
         )
         self.name = name
