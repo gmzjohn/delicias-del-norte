@@ -1,10 +1,12 @@
 from datetime import datetime
 from decimal import Decimal
+
 from .base_entity import BaseEntity
-from .enums.entity_status import EntityStatus
-from .product import Product
-from .order import Order
 from .employee import Employee
+from .enums.entity_status import EntityStatus
+from .order import Order
+from .product import Product
+
 
 class OrderItem(BaseEntity):
     def __init__(
@@ -29,7 +31,7 @@ class OrderItem(BaseEntity):
             created_at=created_at,
             updated_at=updated_at,
         )
-        
+
         self.product = product
         self.quantity = quantity
         self.price = price
