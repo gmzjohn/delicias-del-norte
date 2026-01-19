@@ -1,27 +1,22 @@
 from datetime import datetime
-from decimal import Decimal
-from typing import List
 
 from .base_entity import BaseEntity
 from .enums.entity_status import EntityStatus
-from .enums.product_type import ProductType
-from .product_recipe import ProductRecipe
+from .product import Product
 
 
-class Product(BaseEntity):
+class ProductRecipe(BaseEntity):
     def __init__(
         self,
         id: int,
-        name: str,
-        price: Decimal,
-        type: ProductType,
         status: EntityStatus,
         created_by: int,
         updated_by: int,
         created_at: datetime,
         updated_at: datetime,
-        description: str | None = None,
-        recipe: List[ProductRecipe] | None = None,
+        product: Product,
+        ingredient: Product,
+        quantity: int,
     ):
         super().__init__(
             id=id,
@@ -31,8 +26,6 @@ class Product(BaseEntity):
             created_at=created_at,
             updated_at=updated_at,
         )
-
-        self.name = name
-        self.price = price
-        self.type = type
-        self.description = description
+        self.product = product
+        self.ingredient = ingredient
+        self.quantity = quantity
