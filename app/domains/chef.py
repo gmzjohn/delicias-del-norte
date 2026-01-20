@@ -1,11 +1,12 @@
 from datetime import datetime
 
-from .enums.employee_role import EmployeeRole
+from app.domains.enums.employee_role import EmployeeRole
+
+from .employee import Employee
 from .enums.entity_status import EntityStatus
-from .person import Person
 
 
-class Employee(Person):
+class Chef(Employee):
     def __init__(
         self,
         id: int,
@@ -19,7 +20,7 @@ class Employee(Person):
         address: str | None,
         email: str | None,
         phone: str | None,
-        role: EmployeeRole,
+        experience_years: int,
     ):
         super().__init__(
             id=id,
@@ -33,5 +34,7 @@ class Employee(Person):
             address=address,
             email=email,
             phone=phone,
+            role=EmployeeRole.CHEF,
         )
-        self.role = role
+
+        self.experience_years = experience_years

@@ -2,7 +2,7 @@ from datetime import datetime
 from decimal import Decimal
 
 from .base_entity import BaseEntity
-from .employee import Employee
+from .chef import Chef
 from .enums.entity_status import EntityStatus
 from .order import Order
 from .product import Product
@@ -21,7 +21,7 @@ class OrderItem(BaseEntity):
         quantity: int,
         price: Decimal,
         order: Order,
-        assigned_chef: Employee,
+        assigned_chef: Chef,
     ):
         super().__init__(
             id=id,
