@@ -4,6 +4,7 @@ from decimal import Decimal
 from .base_entity import BaseEntity
 from .chef import Chef
 from .enums.entity_status import EntityStatus
+from .enums.measure_unit import MeasureUnit
 from .order import Order
 from .product import Product
 
@@ -22,6 +23,7 @@ class OrderItem(BaseEntity):
         price: Decimal,
         order: Order,
         assigned_chef: Chef,
+        measure_unit: MeasureUnit,
     ):
         super().__init__(
             id=id,
@@ -37,3 +39,4 @@ class OrderItem(BaseEntity):
         self.price = price
         self.order = order
         self.assigned_chef = assigned_chef
+        self.measure_unit = measure_unit
