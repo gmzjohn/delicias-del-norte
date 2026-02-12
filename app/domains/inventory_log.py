@@ -1,7 +1,9 @@
 from datetime import datetime
+from decimal import Decimal
 
 from .base_entity import BaseEntity
 from .enums.entity_status import EntityStatus
+from .enums.measure_unit import MeasureUnit
 from .product import Product
 
 
@@ -15,7 +17,8 @@ class InventoryLog(BaseEntity):
         created_at: datetime,
         updated_at: datetime,
         product: Product,
-        quantity: int,
+        quantity: Decimal,
+        measure_unit: MeasureUnit,
     ):
         super().__init__(
             id=id,
@@ -27,3 +30,4 @@ class InventoryLog(BaseEntity):
         )
         self.product = product
         self.quantity = quantity
+        self.measure_unit = measure_unit
