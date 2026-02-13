@@ -20,6 +20,7 @@ class ProductRecipe(BaseEntity):
         ingredient: Product,
         quantity: Decimal,
         measure_unit: MeasureUnit,
+        preparation_time: Decimal,
     ):
         super().__init__(
             id=id,
@@ -33,3 +34,4 @@ class ProductRecipe(BaseEntity):
         self.ingredient = ingredient
         self.quantity = quantity
         self.measure_unit = measure_unit
+        self.preparation_time = preparation_time

@@ -40,3 +40,13 @@ class Product(BaseEntity):
         self.measure_unit = measure_unit
         self.description = description
         self.recipe = recipe
+
+    def calculate_preparation_time(self) -> Decimal:
+        if not self.recipe:
+            return Decimal(0)
+
+        total_time = Decimal(0)
+        for item in self.recipe:
+            total_time += item.preparation_time
+
+        return total_time
