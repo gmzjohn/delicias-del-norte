@@ -23,7 +23,7 @@ class Product(BaseEntity):
         updated_at: datetime,
         measure_unit: MeasureUnit,
         description: str | None = None,
-        recipe: List[ProductRecipe] | None = None,
+        recipe: List[ProductRecipe] = [],
     ):
         super().__init__(
             id=id,
@@ -40,3 +40,14 @@ class Product(BaseEntity):
         self.measure_unit = measure_unit
         self.description = description
         self.recipe = recipe
+
+        def total_estimated_time():
+            total = 0
+
+            if not self.recipe:
+                return total
+
+            for action in self.recipe:
+                total += action.estimated_time
+
+            return total

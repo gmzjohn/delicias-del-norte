@@ -4,6 +4,7 @@ from decimal import Decimal
 from .base_entity import BaseEntity
 from .enums.entity_status import EntityStatus
 from .enums.measure_unit import MeasureUnit
+from .enums.ingredient_preparation_action import IngredientPreparationAction
 from .product import Product
 
 
@@ -20,6 +21,8 @@ class ProductRecipe(BaseEntity):
         ingredient: Product,
         quantity: Decimal,
         measure_unit: MeasureUnit,
+        action: IngredientPreparationAction,
+        estimated_time: int,
     ):
         super().__init__(
             id=id,
@@ -33,3 +36,5 @@ class ProductRecipe(BaseEntity):
         self.ingredient = ingredient
         self.quantity = quantity
         self.measure_unit = measure_unit
+        self.action = action
+        self.estimated_time = estimated_time
