@@ -1,17 +1,12 @@
 from datetime import datetime
-from decimal import Decimal
-from typing import Optional
-
-from app.utils.linked_list import LinkedList
 
 from .base_entity import BaseEntity
 from .enums.entity_status import EntityStatus
-from .enums.measure_unit import MeasureUnit
-from .preparation_action import PreparationAction
+from .enums.ingredient_preparation_action import IngredientPreparationAction
 from .product import Product
 
 
-class ProductRecipe(BaseEntity):
+class PreparationAction(BaseEntity):
     def __init__(
         self,
         id: int,
@@ -21,10 +16,9 @@ class ProductRecipe(BaseEntity):
         created_at: datetime,
         updated_at: datetime,
         product: Product,
-        ingredient: Product,
-        quantity: Decimal,
-        measure_unit: MeasureUnit,
-        actions: Optional[LinkedList[PreparationAction]] = None,
+        description: str,
+        action: IngredientPreparationAction,
+        estimated_time: int,
     ):
         super().__init__(
             id=id,
@@ -35,7 +29,6 @@ class ProductRecipe(BaseEntity):
             updated_at=updated_at,
         )
         self.product = product
-        self.ingredient = ingredient
-        self.quantity = quantity
-        self.measure_unit = measure_unit
-        self.actions = actions
+        self.description = description
+        self.action = action
+        self.estimated_time = estimated_time
