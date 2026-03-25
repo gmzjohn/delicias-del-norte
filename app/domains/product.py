@@ -6,6 +6,7 @@ from .base_entity import BaseEntity
 from .enums.entity_status import EntityStatus
 from .enums.measure_unit import MeasureUnit
 from .enums.product_type import ProductType
+
 from .product_recipe import ProductRecipe
 
 
