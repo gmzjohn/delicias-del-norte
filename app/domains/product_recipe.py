@@ -20,7 +20,6 @@ class ProductRecipe(BaseEntity):
         updated_by: int,
         created_at: datetime,
         updated_at: datetime,
-        product: Product,
         ingredient: Product,
         quantity: Decimal,
         measure_unit: MeasureUnit,
@@ -34,7 +33,6 @@ class ProductRecipe(BaseEntity):
             created_at=created_at,
             updated_at=updated_at,
         )
-        self.product = product
         self.ingredient = ingredient
         self.quantity = quantity
         self.measure_unit = measure_unit
