@@ -13,3 +13,10 @@ class IocContainer:
             raise ValueError("This service is not registered.")
 
         return self._instance_pool[name]
+
+
+ioc_container = IocContainer()
+
+
+def get_ioc_container_instance():
+    return ioc_container
