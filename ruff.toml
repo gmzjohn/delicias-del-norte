@@ -1,0 +1,36 @@
+target-version = "py311"
+
+line-length = 120
+
+[lint]
+select = [
+  "E",
+  "W",
+  "F",
+  "I",
+  "UP",
+  "B",
+  "A",
+  "ARG",
+  "N",
+  "BLE",
+  "SIM",
+  "RUF",
+]
+
+ignore = [
+  "E111",
+  "E114",
+  "E117",
+  "W191",
+]
+
+[lint.isort]
+known-first-party = ["app"]
+
+[lint.per-file-ignores]
+"__init__.py" = []
+
+[format]
+quote-style = "double"
+indent-style = "space"
