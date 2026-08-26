@@ -1,0 +1,50 @@
+# Ruff configuration.
+# NOTE: this is a *standalone* ruff.toml, not a [tool.ruff] table inside
+# pyproject.toml -- keys are top-level here, with no "tool.ruff" / "project" wrapper.
+
+# Target runtime. Keep this in sync with whatever version the environment
+# manager step ends up pinning (.python-version / pyproject requires-python).
+target-version = "py311"
+
+line-length = 120
+
+[lint]
+# NOT covered by any rule below (no ruff rule exists for this at all):
+#   - unreachable code detection (Pylint's W0101 has no ruff equivalent yet)
+select = [
+  "E",   # pycodestyle errors: bare except E722, imports-not-at-top E402, line length E501, etc.
+  "W",   # pycodestyle warnings: trailing whitespace W291/W293, missing newline at EOF W292, etc.
+  "F",   # Pyflakes: undefined names, unused imports/vars, redefinitions, duplicate/wildcard imports
+  "I",   # isort: import sorting + stdlib/third-party/local grouping
+  "UP",  # pyupgrade: flags outdated language constructs
+  "B",   # flake8-bugbear: no-effect/useless expressions (B018), likely bugs
+  "A",   # flake8-builtins: shadowing builtin names
+  "ARG", # flake8-unused-arguments: unused function/method arguments
+  "N",   # pep8-naming: naming convention consistency
+  "BLE", # flake8-blind-except: catching bare/overly-broad exceptions
+  "SIM", # flake8-simplify: redundant/needlessly complex code
+  "RUF", # Ruff-specific rules, including RUF100 (flags stale/unnecessary noqa)
+]
+
+ignore = [
+  "E111", # indentation-with-invalid-multiple: conflicts with `ruff format`
+  "E114", # indentation-with-invalid-multiple-comment: conflicts with `ruff format`
+  "E117", # over-indented: conflicts with `ruff format`
+  "W191", # tab-indentation: moot since we don't use tabs, kept for documentation/safety
+]
+
+[lint.isort]
+# Without this, "first-party vs third-party" classification for absolute
+# imports like `app.domains...` relies on ruff being invoked from the repo
+# root. Setting it explicitly makes import grouping correct regardless of
+# invocation directory (CI, different editor config, etc.).
+known-first-party = ["app"]
+
+[lint.per-file-ignores]
+# No __init__.py files exist in this project yet -- left empty intentionally,
+# not dead config to be removed once the package init files are added.
+"__init__.py" = []
+
+[format]
+quote-style = "double"
+indent-style = "space"
