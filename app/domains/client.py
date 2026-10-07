@@ -1,6 +1,8 @@
-from datetime import datetime, timezone
+from datetime import datetime
+
 from .enums.entity_status import EntityStatus
 from .person import Person
+
 
 class Client(Person):
     def __init__(
