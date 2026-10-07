@@ -1,6 +1,5 @@
 from datetime import datetime
 from decimal import Decimal
-from typing import Optional
 
 from app.utils.linked_list import LinkedList
 
@@ -23,7 +22,7 @@ class ProductRecipe(BaseEntity):
         ingredient: Product,
         quantity: Decimal,
         measure_unit: MeasureUnit,
-        actions: Optional[LinkedList[PreparationAction]] = None,
+        actions: LinkedList[PreparationAction] | None = None,
     ):
         super().__init__(
             id=id,

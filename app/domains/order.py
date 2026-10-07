@@ -1,8 +1,9 @@
 from datetime import datetime
+
 from .base_entity import BaseEntity
+from .client import Client
 from .enums.entity_status import EntityStatus
 from .order_item import OrderItem
-from .client import Client
 
 
 class Order(BaseEntity):

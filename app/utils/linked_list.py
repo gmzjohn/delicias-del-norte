@@ -1,4 +1,6 @@
-from typing import Callable, Generic, Optional, TypeVar
+from collections.abc import Callable
+from typing import Generic, Optional, TypeVar
+
 from ..domains.enums.traverse_type import TraverseType
 
 T = TypeVar("T")
@@ -18,8 +20,8 @@ class Node(Generic[T]):
 
 class LinkedList(Generic[T]):
     def __init__(self) -> None:
-        self.head: Optional["Node[T]"] = None
-        self.tail: Optional["Node[T]"] = None
+        self.head: Node[T] | None = None
+        self.tail: Node[T] | None = None
         self.length = 0
 
     def get_length(self) -> int:
@@ -65,8 +67,6 @@ class LinkedList(Generic[T]):
         fn: Callable[["T"]],
     ) -> None:
 
-
         node = self.head if direction == TraverseType.FORWARD else self.tail
 
         self._traverse(direction, node, fn)
-
